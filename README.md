@@ -1,6 +1,22 @@
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
 
+--
+
+## Reflection
+
+### Describe the effect each of the P, I, D components had in your implementation.
+
+The P (proportional) is the steer proportional to the CTE (the distance to the basic line). It controls the the intensity of turning. If the P is large, the controller will tends to turning large according to the CTE.
+
+The D (differential), the P-Controller tends to run overshoot again and again. This makes the car runs like a snake. With the D term, the car will be always close to the reference trajectory without high oscillation
+
+The I (integral), this term help to offset the influence from the systematic bias.
+
+### Describe how the final hyperparameters were chosen.
+
+First, I choose the P, I, D parameters the same as example described in the course (0.2, 0.004, 3.0). The car can successfully run on the road, but with a big oscillation. This is mainly because the P term coefficient is too big, so steering is too much when there's a CTE. So I manually tried smaller P term and finally found that 0.13 is good enough. Also when I term is too big, it causes overshoot, so I decreased that value, too. The final coef (0.13, 0.00027, 3) turns out to be performing good and smooth. 
+
 ---
 
 ## Dependencies
